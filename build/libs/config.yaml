@@ -1,0 +1,11 @@
+# DO NOT CHANGE, it may cause your config file to be overwritten
+# Alternatively, if you broke the formatting in the config file.
+# Change version to 0 to reset file to default
+version: 1
+
+# Connection parameters, only MySQL is supported at this time.
+# The FULL connection string goes below, generally you only need
+# to edit the beginner, change localhost to your MySQL host
+# monitor to your database name, user= to your username, and
+# password= to your user password
+url: jdbc:mysql://localhost/monitor?user=monitor&password=monitor123&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC

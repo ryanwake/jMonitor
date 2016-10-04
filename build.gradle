@@ -1,0 +1,34 @@
+group 'com.ryanwake'
+version '0.0.1'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile group: 'com.github.dblock', name: 'oshi-core', version: '3.2'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.4'
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.17'
+    compile group: 'commons-io', name: 'commons-io', version: '2.5'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.21'
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'jMonitor',
+                'Main-Class': 'com.ryanwake.jMonitor.Main'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+artifacts {
+    archives fatJar
+}
