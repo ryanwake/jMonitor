@@ -1,0 +1,12 @@
+Nov 04, 2016 12:24:01 PM com.ryanwake.jMonitor.Main main
+INFO: jMonitor logging started.
+Nov 04, 2016 12:24:01 PM com.ryanwake.jMonitor.Main main
+INFO: Reading config file...
+Nov 04, 2016 12:24:01 PM com.ryanwake.jMonitor.Main main
+INFO: Found config of version: 1 Located at: /Users/ryan/IdeaProjects/jMonitor/build/libs/./config.yaml
+Nov 04, 2016 12:24:01 PM com.ryanwake.jMonitor.Main main
+INFO: Connected to MySQL database.
+Nov 04, 2016 12:24:01 PM com.ryanwake.jMonitor.Main insertData
+SEVERE: Could not insert data to table: Duplicate entry 'B8-E8-56-49-94-FA' for key 'PRIMARY'
+Nov 04, 2016 12:24:01 PM com.ryanwake.jMonitor.Main main
+INFO: Finished execution in 432 milliseconds.

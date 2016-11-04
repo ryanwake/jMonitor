@@ -109,6 +109,12 @@ public class Main {
         data.put("osbuild", os.getVersion().getBuildNumber());
         data.put("procFam", si.getHardware().getProcessor().getName());
         data.put("memory", (int)((si.getHardware().getMemory().getTotal())/1000000000));
+        try {
+            data.put("hostname", InetAddress.getLocalHost().getHostName());
+        } catch (Exception e) {
+            log.severe("Unable to get hostname");
+        }
+
         data.put("ip", ip.getHostAddress());
 
         for (Map.Entry<String, Object> entry : data.entrySet())
@@ -118,41 +124,18 @@ public class Main {
     }
 
     public static void insertData() {
-        String checkQuery = "select * from computers where macAddr = ?";
-        ResultSet rs;
         try {
-            PreparedStatement checkPrep = conn.prepareStatement(checkQuery);
-            checkPrep.setString(1, data.get("mac").toString());
-            rs = checkPrep.executeQuery();
-            while (rs.next()) {
-                if (rs.next() > 0) {
-                    String query = "insert into computers (macAddr, osname, osvers, osbuild, processor, memory, ip)"
-                            + " values (?, ?, ?, ?, ?, ?, ?)";
-                    PreparedStatement prep = conn.prepareStatement(query);
-                    prep.setString(1, data.get("mac").toString());
-                    prep.setString(2, data.get("osname").toString());
-                    prep.setString(3, data.get("osvers").toString());
-                    prep.setString(4, data.get("osbuild").toString());
-                    prep.setString(5, data.get("procFam").toString());
-                    prep.setInt(6, (int) data.get("memory"));
-                    prep.setString(7, data.get("ip").toString());
-                    prep.execute();
-                } else {
-                    String query = "update computers set osname= ? , osvers = ? , osbuild = ? , processor = ? ,"
-                            + " memory = ? , ip = ? where macAddr = ?";
-                    PreparedStatement prep = conn.prepareStatement(query);
-
-                    prep.setString(1, data.get("osname").toString());
-                    prep.setString(2, data.get("osvers").toString());
-                    prep.setString(3, data.get("osbuild").toString());
-                    prep.setString(4, data.get("procFam").toString());
-                    prep.setInt(5, (int) data.get("memory"));
-                    prep.setString(6, data.get("ip").toString());
-                    prep.setString(7, data.get("mac").toString());
-                }
-
-            }
-
+            String query = "{CALL computerInfo(?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement prep = conn.prepareCall(query);
+            prep.setString(1, data.get("mac").toString());
+            prep.setString(2, data.get("osname").toString());
+            prep.setString(3, data.get("osvers").toString());
+            prep.setString(4, data.get("osbuild").toString());
+            prep.setString(5, data.get("procFam").toString());
+            prep.setInt(6, (int) data.get("memory"));
+            prep.setString(7, data.get("ip").toString());
+            prep.setString(8, data.get("hostname").toString());
+            prep.executeQuery();
         } catch (Exception ex) {
             log.severe("Could not insert data to table: " + ex.getLocalizedMessage());
         }

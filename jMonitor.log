@@ -1,0 +1,4 @@
+Sep 29, 2016 2:52:32 PM com.ryanwake.jMonitor.Main main
+INFO: jMonitor logging started.
+Sep 29, 2016 2:52:32 PM com.ryanwake.jMonitor.Main main
+INFO: No previous config.yaml found, creating at: /Users/ryan/IdeaProjects/jMonitor/build/classes/config.yaml

@@ -1,10 +1,10 @@
-Sep 29, 2016 3:29:55 PM com.ryanwake.jMonitor.Main main
+Nov 04, 2016 12:43:43 PM com.ryanwake.jMonitor.Main main
 INFO: jMonitor logging started.
-Sep 29, 2016 3:29:55 PM com.ryanwake.jMonitor.Main main
+Nov 04, 2016 12:43:43 PM com.ryanwake.jMonitor.Main main
 INFO: Reading config file...
-Sep 29, 2016 3:29:55 PM com.ryanwake.jMonitor.Main main
+Nov 04, 2016 12:43:43 PM com.ryanwake.jMonitor.Main main
 INFO: Found config of version: 1 Located at: /Users/ryan/IdeaProjects/jMonitor/build/libs/./config.yaml
-Sep 29, 2016 3:29:55 PM com.ryanwake.jMonitor.Main main
+Nov 04, 2016 12:43:43 PM com.ryanwake.jMonitor.Main main
 INFO: Connected to MySQL database.
-Sep 29, 2016 3:29:55 PM com.ryanwake.jMonitor.Main main
-INFO: Finished execution in 451 milliseconds.
+Nov 04, 2016 12:43:44 PM com.ryanwake.jMonitor.Main main
+INFO: Finished execution in 437 milliseconds.
