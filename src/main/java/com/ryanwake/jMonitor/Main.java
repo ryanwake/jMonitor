@@ -60,9 +60,13 @@ public class Main {
     public static void readConfig() {
         Yaml yaml = new Yaml();
         Reader reader = null;
+        String currentDirectory = System.getProperty("user.dir");
+        System.out.println(currentDirectory);
+        String inputFileName = currentDirectory+"/config.yaml";
+        File configFile = new File(inputFileName);
 
         try {
-            reader = new FileReader("./config.yaml");
+            reader = new FileReader(configFile);
             config = (Map<String,Object>) yaml.load(reader);
         } catch (Exception ex) {
             System.out.println("Couldn't load config file: " + ex.getLocalizedMessage());
@@ -108,7 +112,7 @@ public class Main {
         data.put("osvers", os.getVersion().getVersion());
         data.put("osbuild", os.getVersion().getBuildNumber());
         data.put("procFam", si.getHardware().getProcessor().getName());
-        data.put("memory", (int)((si.getHardware().getMemory().getTotal())/1000000000));
+        data.put("memory", (int)((si.getHardware().getMemory().getTotal())/1024/1024/1024));
         try {
             data.put("hostname", InetAddress.getLocalHost().getHostName());
         } catch (Exception e) {

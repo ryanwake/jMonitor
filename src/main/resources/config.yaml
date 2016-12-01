@@ -8,4 +8,4 @@ version: 1
 # to edit the beginner, change localhost to your MySQL host
 # monitor to your database name, user= to your username, and
 # password= to your user password
-url: jdbc:mysql://localhost/monitor?user=monitor&password=monitor123&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+url: jdbc:mysql://104.196.139.77/monitor?user=jmonitor&password=BestPassword2016&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
